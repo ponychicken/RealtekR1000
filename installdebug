@@ -1,0 +1,16 @@
+#!/bin/sh
+cd build
+cd Debug
+echo "file attribute adjusting for  RealtekR1000.kext"
+
+sudo rm -rf /System/Library/Extensions.mkext
+sudo rm -rf /System/Library/Extensions.kextcache
+
+sudo cp -R RealtekR1000.kext /System/Library/Extensions
+sudo chown -R root:wheel RealtekR1000.kext
+sudo find /System/Library/Extensions/RealtekR1000.kext -type d -exec chmod 0755 {} \;
+sudo find /System/Library/Extensions/RealtekR1000.kext -type f -exec chmod 0644 {} \; 
+
+sudo kextload -t RealtekR1000.kext
+sudo kextcache -k /System/Library/Extensions
+

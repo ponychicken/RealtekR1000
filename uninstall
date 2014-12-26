@@ -1,0 +1,14 @@
+#!/bin/sh
+cd build
+cd Debug
+echo "file attribute adjusting for  RealtekR1000.kext"
+sudo chown -R root:wheel  /System/Library/Extensions/RealtekR1000.kext
+sudo find  /System/Library/Extensions/RealtekR1000.kext -type d -exec chmod 0755 {} \;
+sudo find  /System/Library/Extensions/RealtekR1000.kext -type f -exec chmod 0644 {} \; 
+
+sudo kextunload  /System/Library/Extensions/RealtekR1000.kext
+sudo rm -R /System/Library/Extensions/RealtekR1000.kext
+
+echo "restore file attributes..."
+sudo chown -R `whoami` /System/Library/Extensions/RealtekR1000.kext
+sudo kextcache -k /System/Library/Extensions
