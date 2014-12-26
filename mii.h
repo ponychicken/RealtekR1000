@@ -15,6 +15,39 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ *****************************************************************
+ *
+ * MODIFIED by PSYSTAR, 2008 -- (Rudy Pedraza)
+ * -- all changes released under GPL as required
+ * -- changes made to code are copyright PSYSTAR Corporation, 2008
+ **** Enhancement Log
+ * - added sleep/wake DHCP fix for
+ * - changed tx/rx interrupt handling, 2x speedup
+ * - added support for multiple NIC's, driver didnt play nice before
+ * - fixed com.apple.kernel & com.apple.kpi dependencies, you cant use both (warning now, future error)
+ * - cleaned up Info.plist, fixed matching
+ *
+ *****************************************************************
+ *
+ * MODIFIED by Chuck Fry (chucko@chucko.com) 2009
+ * -- released under GPL
+ **** Enhancement log
+ * - 64 bit clean
+ * - Handle 64 bit pointers as appropriate
+ * - you can safely ignore compiler warning "Right shift count >= width of type" on 32 bit platforms
+ * - fix compiler errors in increaseActivationLevel()
+ * - better thread safety for outputPacket()
+ * - added liberal comments where I needed to figure out what was happening
+ *
+ *****************************************************************
+ *
+ * modified by Slice 2013
+ * -- updated according latest linux's sources r8168-8.035.00, 2012
+ * -- added speed check
+ * -- warning eliminatings
+ *
+ ******************************************************************
  */
 
 #ifndef _MII_H_
@@ -32,5 +65,3 @@
 
 
 #endif
-
-
